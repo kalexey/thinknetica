@@ -3,25 +3,20 @@
 # this program determines whether a triangle
 # is rectangular, isosceles or equilateral
 
-sides = [0.0, 0.0, 0.0]
-
-sides.each_index do |index|
-  print "#{index + 1}. Enter the side length "
-  sides[index] = Integer(gets.chomp)
+sides = []
+(1..3).each do |i|
+  print "#{i}. Enter the side length "
+  sides << gets.chomp.to_i
 end
 
-sides = sides.sort
+a, b, c = sides.sort
 
-if sides[0]**2 + sides[1]**2 == sides[2]
+if a**2 + b**2 == c**2
   puts 'Right angled triangle'
 else
   puts 'Not right angled triangle'
 end
 
-puts 'Isosceles triangle' if sides[0] == sides[1]
+puts 'Isosceles triangle' if a == b
 
-puts 'Equilateral triangle' if sides[0] == sides[1] && sides[1] == sides[2]
-
-sides.each do |value|
-  puts "Side #{value}"
-end
+puts 'Equilateral triangle' if a == b && b == c

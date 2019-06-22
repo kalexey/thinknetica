@@ -3,25 +3,25 @@
 # this program solve square equation
 
 print 'Enter coeffecient a '
-a = Float(gets.chomp)
+a = gets.chomp.to_f
 
 print 'Enter coeffecient b '
-b = Float(gets.chomp)
+b = gets.chomp.to_f
 
 print 'Enter coeffecient c '
-c = Float(gets.chomp)
+c = gets.chomp.to_f
 
 # calculate determinant D
 
-D = b**2 - 4 * a * c
-C = Math.sqrt(D.abs)
-if D.positive?
-  x1 = (-b - C) / (2 * a)
-  x2 = (-b + C) / (2 * a)
-  puts "D = #{D}, x1 = #{x1}, x2 = #{x2}"
-elsif D.negative?
-  puts "D = #{D}, the equation has no real roots "
+d = b**2 - 4 * a * c
+sqrt_d = Math.sqrt(d.abs)
+if d.positive?
+  x1 = (-b - sqrt_d) / (2 * a)
+  x2 = (-b + sqrt_d) / (2 * a)
+  puts "D = #{d}, x1 = #{x1}, x2 = #{x2}"
+elsif d.negative?
+  puts "D = #{d}, the equation has no real roots "
 else
   x12 = (-b) / (2 * a)
-  puts "D = #{D}, x12 = #{x12}"
+  puts "D = #{d}, x12 = #{x12}"
 end

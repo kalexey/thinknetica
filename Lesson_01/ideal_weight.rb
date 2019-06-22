@@ -7,7 +7,7 @@ print 'Enter your name '
 name = gets.chomp
 
 print 'Enter your height in centimeters '
-height = Integer(gets.chomp)
+height = gets.chomp.to_i
 
 ideal_weight = height - 110
 

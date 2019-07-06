@@ -19,7 +19,7 @@ total_amount = 0.0
 
 goods.each do |key, value|
   puts "name #{key}, unit price #{value[:unit_price]}, amount #{value[:amount]}"
-  total_amount += value[:unit_price]*value[:amount]
+  total_amount += value[:unit_price] * value[:amount]
 end
 
 puts "Total amount #{total_amount}"

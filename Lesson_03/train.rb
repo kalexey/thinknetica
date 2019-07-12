@@ -50,12 +50,16 @@ class Train
   end
 
   def move_next_station
+    return if @current_station == @current_route.stations.last
+
     @current_station.send_train(self)
     @current_station = next_station
     @current_station.receive_train(self)
   end
 
   def move_prev_station
+    return if @current_station == @current_route.stations.first
+
     @current_station.send_train(self)
     @current_station = prev_station
     @current_station.receive_train(self)

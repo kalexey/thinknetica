@@ -96,32 +96,32 @@ puts 'Train0 current speed after stop v = ' + train0.current_speed.to_s
 
 puts 'Speed = ' + train0.current_speed.to_s
 # number of wagons
-puts 'Train0 number of wagons ' + train0.nr_wagons.to_s
+puts 'Train0 number of wagons ' + train0.wagons_count.to_s
 
 # add wagon
 train0.add_wagon
-puts 'Train0 number of wagons after adding wagon ' + train0.nr_wagons.to_s
+puts 'Train0 number of wagons after adding wagon ' + train0.wagons_count.to_s
 
 # remove wagon
 train0.remove_wagon
-puts 'Train0 number of wagons after removing ' + train0.nr_wagons.to_s
+puts 'Train0 number of wagons after removing ' + train0.wagons_count.to_s
 
 train0.run(100)
 puts 'Speed = ' + train0.current_speed.to_s
 
 # number of wagons
-puts 'Train0 number of wagons ' + train0.nr_wagons.to_s
+puts 'Train0 number of wagons ' + train0.wagons_count.to_s
 
 # add wagon
 train0.add_wagon
-puts 'Train0 number of wagons after adding wagon ' + train0.nr_wagons.to_s
+puts 'Train0 number of wagons after adding wagon ' + train0.wagons_count.to_s
 
 # remove wagon
 train0.remove_wagon
-puts 'Train0 number of wagons after removing ' + train0.nr_wagons.to_s
+puts 'Train0 number of wagons after removing ' + train0.wagons_count.to_s
 train0.stop
 
-train0.route(route0)
+train0.take_route(route0)
 
 puts 'Train is added to first station by default'
 puts train0.current_route.stations[0].trains

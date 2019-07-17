@@ -29,9 +29,18 @@ class Train
     @current_station.receive_train(self)
   end
 
-  def add_wagon(wagon); end
+  def add_wagon(wagon)
+    return unless @current_speed.zero?
+    return unless wagon.type == @type
 
-  def remove_wagon(wagon); end
+    @wagons << wagon unless @wagons.include?(wagon)
+  end
+
+  def remove_wagon(wagon)
+    return unless @current_speed.zero?
+
+    @wagons.delete(wagon) if @wagons.include?(wagon)
+  end
 
   def next_station
     return @current_station if @current_route.stations.last == @current_station

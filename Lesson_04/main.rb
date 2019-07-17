@@ -21,9 +21,12 @@ class RailwayMenu
   end
 
   def main_menu
+    system 'clear'
     loop do
       show_menu(MAIN_MENU)
-      case gets.chomp.to_i
+      i = gets.chomp.to_i
+      system 'clear'
+      case i
       when 0 then station_menu
       when 1 then route_menu
       when 2 then train_menu
@@ -33,15 +36,19 @@ class RailwayMenu
     end
   end
 
+  private
+
   def station_menu
     loop do
       show_menu(STATION_MENU)
-      case gets.chomp.to_i
+      i = gets.chomp.to_i
+      system 'clear'
+
+      case i
       when 0 then create_station
-      when 1 then delete_station
-      when 2 then station_info
-      when 3 then list_stations
-      when 4 then break
+      when 1 then station_info
+      when 2 then list_stations
+      when 3 then break
       else puts 'Wrong index'
       end
     end
@@ -55,19 +62,6 @@ class RailwayMenu
     else
       @stations << Station.new(name)
       puts "Station #{name} is created"
-    end
-  end
-
-  def delete_station
-    list_stations
-    print 'Deleting station. Enter station name: '
-    name = gets.chomp
-    index = @stations.index { |s| s.name == name }
-    if index.nil?
-      puts "Station with name #{name} already not exist"
-    else
-      @stations.delete_at(index)
-      puts "Station #{name} is deleted"
     end
   end
 
@@ -85,7 +79,9 @@ class RailwayMenu
   def route_menu
     loop do
       show_menu(ROUTE_MENU)
-      case gets.chomp.to_i
+      i = gets.chomp.to_i
+      system 'clear'
+      case i
       when 0 then create_route
       when 1 then add_station_to_route
       when 2 then remove_station_from_route
@@ -156,7 +152,9 @@ class RailwayMenu
   def train_menu
     loop do
       show_menu(TRAIN_MENU)
-      case gets.chomp.to_i
+      i = gets.chomp.to_i
+      system 'clear'
+      case i
       when 0 then create_pass_train
       when 1 then create_cargo_train
       when 2 then assign_route
@@ -239,8 +237,6 @@ class RailwayMenu
     @trains[train_index].move_prev_station
   end
 
-  private
-
   def show_menu(items)
     items.each_with_index { |s, i| puts "#{i}. #{s}" }
   end
@@ -316,7 +312,6 @@ class RailwayMenu
                'Exit'].freeze
 
   STATION_MENU = ['create station',
-                  'delete station',
                   'station info',
                   'stations list',
                   'return'].freeze
@@ -340,13 +335,3 @@ end
 
 rm = RailwayMenu.new
 rm.main_menu
-rm.create_route
-
-# pw = PassengerWagon.new
-# cw = CargoWagon.new
-# pw.show_info
-# cw.show_info
-#
-# t = PassengerTrain.new('aaaa')
-# t.add_wagon(pw)
-# t.show_info

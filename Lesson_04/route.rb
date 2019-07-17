@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # class for describing route
 class Route
   attr_reader :stations
@@ -15,17 +17,11 @@ class Route
     @stations.delete(station) if @stations.include?(station)
   end
 
-  def list_route_stations
-    @stations.each do |s|
-      puts "Station #{s.name}"
-    end
+  def route_name
+    stations.first.name + ' - ' + stations.last.name
   end
 
-  def to_s
-    s = "Route\r\n"
-    @stations.each do |st|
-      s += '    ' + st.name + "\r\n"
-    end
-    s
+  def list_route_stations
+    stations.map(&:name)
   end
 end

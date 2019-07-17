@@ -68,6 +68,8 @@ class RailwayMenu
   def station_info
     list_stations
     station_index = select_station
+    return if station_index.nil?
+    
     puts 'station name:' + @stations[station_index].name
     if @stations[station_index].trains_list.empty?
       puts 'no trains at the station'

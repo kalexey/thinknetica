@@ -4,6 +4,7 @@ require_relative 'instance_counter'
 # class for describing station
 class Station
   attr_reader :trains, :name
+  @@stations = []
 
   include InstanceCounter
 
@@ -11,6 +12,7 @@ class Station
     @name = name
     @trains = []
     register_instance
+    @@stations << self
   end
 
   def receive_train(train)
@@ -27,5 +29,9 @@ class Station
 
   def trains_list_by_type(type)
     @trains.map { |t| t if t.type == type }
+  end
+
+  def self.all
+    @@stations
   end
 end

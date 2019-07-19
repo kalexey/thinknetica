@@ -10,7 +10,7 @@ class Train
   include Manufacturer
   include InstanceCounter
 
-  @@trains = []
+  @@trains = {}
 
   def initialize(number = 0)
     @number = number
@@ -19,7 +19,7 @@ class Train
     @current_station = nil
     @current_route = nil
     @current_speed = 0
-    @@trains << self
+    @@trains[number] = self
     register_instance
   end
 
@@ -88,7 +88,7 @@ class Train
     # @wagons.each(&:show_info)
   end
 
-  def find(number)
-    @@trains.find { |t| t.number == number }
+  def self.find(number)
+    @@trains[number]
   end
 end

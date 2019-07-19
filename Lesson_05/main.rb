@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require 'pry'
 require_relative 'lib/station'
 require_relative 'lib/route'
 
@@ -55,7 +55,9 @@ class RailwayMenu
     end
   end
 
+  
   def create_station
+    binding.pry
     print 'Creating station. Enter station name: '
     name = gets.chomp
     if @stations.any? { |s| s.name == name }

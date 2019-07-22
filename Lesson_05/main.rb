@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-require 'pry'
+
 require_relative 'lib/station'
 require_relative 'lib/route'
 
@@ -10,7 +10,6 @@ require_relative 'lib/train/train'
 require_relative 'lib/wagon/passenger_wagon'
 require_relative 'lib/wagon/cargo_wagon'
 require_relative 'lib/wagon/wagon'
-
 
 # class describing control terminal
 class RailwayMenu
@@ -55,9 +54,7 @@ class RailwayMenu
     end
   end
 
-  
   def create_station
-    binding.pry
     print 'Creating station. Enter station name: '
     name = gets.chomp
     if @stations.any? { |s| s.name == name }
@@ -72,7 +69,7 @@ class RailwayMenu
     list_stations
     station_index = select_station
     return if station_index.nil?
-    
+
     puts 'station name:' + @stations[station_index].name
     if @stations[station_index].trains_list.empty?
       puts 'no trains at the station'

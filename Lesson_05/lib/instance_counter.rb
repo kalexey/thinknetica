@@ -4,12 +4,18 @@ module InstanceCounter
   # included callback
   def self.included(base)
     base.extend ClassMethods
-    base.instances = 0 unless base.instance_variable_defined?(:@instances)
     base.send :include, InstanceMethods
   end
 
   module ClassMethods
-    attr_accessor :instances
+    def instances
+      @instances = 0 unless instance_variable_defined?(:@instances)
+      @instances
+    end
+
+    def instances=(num)
+      @instances = num
+    end
   end
 
   module InstanceMethods

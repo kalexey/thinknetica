@@ -171,7 +171,7 @@ class RailwayMenu
     raise "Train #{train_number} already created" if train_exists?(train_number)
 
     @trains << PassengerTrain.new(train_number)
-    puts 'Passenger train created'
+    puts "Passenger train #{train_number} created"
   end
 
   def create_cargo_train
@@ -180,7 +180,7 @@ class RailwayMenu
     raise "Train #{train_number} already created" if train_exists?(train_number)
 
     @trains << CargoTrain.new(train_number)
-    puts 'Cargo train created'
+    puts "Cargo train #{train_number} created"
   end
 
   def delete_train; end
